@@ -2,19 +2,39 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:roots_pure/Sign_in_page/sign_in_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Sign_in_page/lgoout_page.dart';
 class SplaceScreen extends StatefulWidget {
   const SplaceScreen({super.key});
   @override
   State<SplaceScreen> createState() => _SplaceScreenState();
 }
 class _SplaceScreenState extends State<SplaceScreen> {
+  late SharedPreferences prefs;
+
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => SignInPage()),
-      );
+    _initializeharedPreferences();
+  }
+
+  Future<void> _initializeharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+
+    Timer(Duration(seconds: 3), () {
+      final bool? Login = prefs.getBool('Root_Pure');
+
+      if (Login == true) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Logout_Page()),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => SignInPage()),
+        );
+      }
     });
   }
   @override
