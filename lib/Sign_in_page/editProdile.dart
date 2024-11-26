@@ -18,7 +18,7 @@ class _EditprodileState extends State<Editprodile> {
         title: Padding(
           padding:  EdgeInsets.only(left: 70),
           child: Text(
-            "Profile",
+            "Edit Profile",
             style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
           ),
@@ -28,10 +28,7 @@ class _EditprodileState extends State<Editprodile> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back,color: Colors.white,),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Dashboard_Page()),
-            );
+           Navigator.pop(context);
           },
         ),
         // leading: Icon(

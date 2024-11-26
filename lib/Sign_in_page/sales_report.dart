@@ -116,15 +116,20 @@ class _SalseReportState extends State<SalseReport> {
             SizedBox(
               height: 15,
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 170),
-              child: Text(
-                "Monthly Sales Target",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff1c3a60)),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Monthly Sales Target",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        color: Color(0xff1c3a60)),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 15,
@@ -137,6 +142,7 @@ class _SalseReportState extends State<SalseReport> {
               scrollDirection: Axis.horizontal,
               child: DataTable(
                   columns: [
+
                     DataColumn(
                         label: Text(
                           "Sr No",
@@ -210,8 +216,7 @@ class _SalseReportState extends State<SalseReport> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           )),
-                    )),
-                  ]),
+                    )),]),
                   DataRow(cells: [
                     DataCell(Text("3")),
                     DataCell(Text("01/02/2024")),

@@ -47,10 +47,18 @@ class _Manage_CustomerState extends State<Manage_Customer> {
                         child: TextField(
                           style: TextStyle(color: Colors.grey),
                           decoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(11),
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(11)
+                            ),
                             filled: true,
                             fillColor: Color(0xfff4f9ff),
                             hintStyle: TextStyle(color: Colors.grey),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(1)),
+                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(11)),
                             hintText: 'Search Customers',
                           ),
                         ),
@@ -107,11 +115,7 @@ class _Manage_CustomerState extends State<Manage_Customer> {
                               ),
                               child: Wrap(
                                 children: [
-                                  Image(
-                                    image: AssetImage(
-                                      "assets/Icons/add.png",
-                                    ),
-                                  ),
+                                  Image.asset("assets/Icons/add.png")
                                   // Padding(
                                   //   padding: const EdgeInsets.only(left:),
                                   //   child: Text("Add", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
@@ -168,7 +172,14 @@ class _Manage_CustomerState extends State<Manage_Customer> {
                       DataCell(Text("Abhishek")),
                       DataCell(Text("8175052643")),
                       DataCell(Text("430")),
-                      DataCell(Image.asset("assets/images/edit.png", height: 40, width: 40,),),
+                      DataCell(
+                        Image.asset(
+                          "assets/Icons/edit.png",
+                          height: 40,
+                          width: 40,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       DataCell(Image.asset("assets/images/delete.png", height: 40, width: 40,),),
 
                     ]),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:roots_pure/DashBoard/dashboard.dart';
+import 'package:roots_pure/Sign_in_page/sign_in_page.dart';
 //import '../calender/calender.dart';
 class ChangePassword extends StatefulWidget {
   const ChangePassword({super.key});
@@ -11,12 +12,13 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //centerTitle: true,
         backgroundColor: const Color(0xff1c3a60),
         title: Center(
           child: Text(
             "Change Password",
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+                fontWeight: FontWeight.w900, fontSize: 22, color: Colors.white),
           ),
         ),
       ),
@@ -59,7 +61,19 @@ class _ChangePasswordState extends State<ChangePassword> {
               child: TextField(style: TextStyle(color: Colors.red
               ),
                 decoration: InputDecoration(
+
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(14)
+
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(14),
+                        borderSide: BorderSide(color: Color(0xff1c3a60))
+
+                    ),
                     hintText: "Enter your Username" ,
+                    hintStyle: TextStyle(color: Colors.grey.shade500),
                     iconColor: Color(0xff8d8d8d),
                     prefixIcon: Icon(Icons.person_outline_outlined),
                     border: OutlineInputBorder(
@@ -76,37 +90,54 @@ class _ChangePasswordState extends State<ChangePassword> {
               child: TextField(style: TextStyle(color: Colors.red
               ),
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(14)
+
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(color: Color(0xff1c3a60))
+
+                  ),
                     hintText: "Enter your Password" ,
+                    hintStyle: TextStyle(color: Colors.grey.shade500),
                     iconColor: Color(0xff8d8d8d),
                     prefixIcon: Icon(Icons.lock_open_rounded,
                       color: Color(0xff8d8d8d),),
-
-                    border: OutlineInputBorder(
-                    )
+                    border: OutlineInputBorder()
                 ),),
             ),
             SizedBox(
               height: 40,
             ),
             Container(
-              child: SizedBox(
-                height: 60,
-                width: 360,
-                child: ElevatedButton(onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Dashboard_Page(),
-                    ),
-                  );
-                },child: Text("Reset Password",
-                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, color: Colors.white),),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff1c3a60),
-                    side: BorderSide(color: Colors.red, width:2),
-                  ),
-                ),
-              ),
+              child:
+
+              SizedBox(
+                  height: 50,
+                  width: 342,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignInPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff1c3a60),
+                          maximumSize: Size(double.infinity, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          )),
+                      child: Text(
+                        "Resert Password",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ))),
             ),
           ],
         ),

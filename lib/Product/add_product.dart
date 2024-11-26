@@ -20,67 +20,67 @@ class _Add_ProductState extends State<Add_Product> {
         title: Padding(
           padding: EdgeInsets.only(left: 60),
           child: Text(
-            "Add ",
+            "Add",
             style: TextStyle(color: Colors.white),
           ),
         ),
         backgroundColor: Color(0xff1c3a60),
-        leading: CircleAvatar(
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Product()),
-              );
-            },
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Product()),
+            );
+          },
         ),
       ),
       body: Column(
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(18),
-              child: Container(
-                //height: 80,
-                width: 300,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.grey,
+                padding: const EdgeInsets.all(18),
+                child: Container(
+                  height: 65,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xfffda005),
+                    shape: BoxShape.rectangle,
                   ),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xfffda005),
-                  shape: BoxShape.rectangle,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Text(
-                              "Grand Total:₹ 2548",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xfffcfdfb),
-                                fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.all(8.0), // Reduced padding
+                              child: Text(
+                                "Grand Total: ₹ 2548",
+                                style: TextStyle(
+                                  fontSize: 16, // Reduced font size
+                                  color: Color(0xfffcfdfb),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                overflow:
+                                    TextOverflow.ellipsis, // Avoid overflow
+                                textAlign: TextAlign.center, // Center text
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-            ),
+                )),
           ),
           Padding(
             padding: const EdgeInsets.only(
@@ -99,41 +99,55 @@ class _Add_ProductState extends State<Add_Product> {
                   height: 50,
                   width: 215,
                   child: TextField(
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey.shade100),
                     decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(11),
+                            borderSide: BorderSide(color: Colors.grey)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(11),
+                            borderSide: BorderSide(color: Colors.grey)),
                         filled: true,
                         fillColor: Color(0xfff4f9ff),
                         prefixIcon: Icon(Icons.phone_outlined),
                         hintStyle: TextStyle(color: Colors.grey),
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(11),
+                            borderSide:
+                                BorderSide(color: Colors.grey.shade100)),
                         hintText: 'Enter Mobile Number'),
                   ),
                 ),
                 Spacer(),
                 SizedBox(
-                    height: 50,
-                    width: 120,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Editprodile()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xff1c3a60),
-                            maximumSize: Size(double.infinity, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            )),
-                        child: Text(
-                          "SEARCH",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ))),
+                  height: 50,
+                  width: 120,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText:
+                          "SEARCH", // ElevatedButton का text "SEARCH" यहाँ hintText में है
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                      filled: true, // Background color के लिए
+                      fillColor:
+                          Color(0xff1c3a60), // Background color वही रखा गया है
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            12), // Border Radius वही रखा गया है
+                        borderSide:
+                            BorderSide.none, // Border को invisible करने के लिए
+                      ),
+                    ),
+                    style: TextStyle(
+                      color: Colors.white, // Text का color
+                      fontSize: 16, // Font size
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -197,12 +211,14 @@ class _Add_ProductState extends State<Add_Product> {
                           builder: (context) => const Editprodile()),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff1c3a60),
-                      maximumSize: Size(double.infinity, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      )),
+
+                style: ElevatedButton.styleFrom(),
+                  // style: ElevatedButton.styleFrom(
+                  //     backgroundColor: Color(0xff1c3a60),
+                  //     maximumSize: Size(double.infinity, 50),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(12),
+                  //     )),
                   child: Text(
                     "Place Order",
                     style: TextStyle(

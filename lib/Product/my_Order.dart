@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../DashBoard/dashboard.dart';
+import 'order_summery.dart';
 
 class Product extends StatefulWidget {
   const Product({super.key});
@@ -13,7 +14,7 @@ class _ProductState extends State<Product> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(left: 60),
+          padding: const EdgeInsets.only(left: 60,),
           child: Text(
             "My Order",
             style: TextStyle(color: Colors.white),
@@ -40,17 +41,22 @@ class _ProductState extends State<Product> {
               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20, top: 10, bottom: 8),
                   child: Text(
                     "My Order",
                     style: TextStyle(
                         color: Color(0xff1c3a60),
-                        fontSize: 20,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
             ),
+          ),
+
+          Divider(
+            height: 2,
+            color: Color(0xff1c3a60),
           ),
           //TODO :: Here we make the DataTable
           Expanded(
@@ -99,7 +105,10 @@ class _ProductState extends State<Product> {
                       height: 35,
                       width: 150,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Summery()));
+
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60)
                           ),
@@ -124,7 +133,9 @@ class _ProductState extends State<Product> {
                       height: 35,
                       width: 150,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Summery()));
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
                           ),
@@ -150,7 +161,10 @@ class _ProductState extends State<Product> {
                       height: 35,
                       width: 150,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Summery()));
+
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
                           ),
@@ -175,7 +189,10 @@ class _ProductState extends State<Product> {
                       height: 35,
                       width: 150,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Summery()));
+
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
                           ),
@@ -200,7 +217,10 @@ class _ProductState extends State<Product> {
                       height: 35,
                       width: 150,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Order_Summery()));
+
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
                           ),

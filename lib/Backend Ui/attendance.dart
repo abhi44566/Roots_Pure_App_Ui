@@ -40,9 +40,7 @@ class _AttendanceState extends State<Attendance> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.check_box_outlined,color: Color(0xff1c3a60),
-                ),
+               Image.asset("assets/Icons/mark.png", height: 30, width: 30,),
                 SizedBox(
                   width: 10,
                 ),
@@ -95,8 +93,8 @@ class _AttendanceState extends State<Attendance> {
             height: 40,
           ),
           SizedBox(
-              height: 52  ,
-              width: 320,
+              height: 42  ,
+              width: 300,
               child: ElevatedButton(
                   onPressed: ()
 
@@ -107,7 +105,7 @@ class _AttendanceState extends State<Attendance> {
                   },
                       style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xff22a89d),
-                      maximumSize: Size(double.infinity, 50),
+                      maximumSize: Size(double.infinity,40),
                       shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(22),
                       )
@@ -117,8 +115,8 @@ class _AttendanceState extends State<Attendance> {
                     "Mark Attendance",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
                   ))),
           // ElevatedButton(
           //   onPressed: () => _launchURL('https://www.youtube.com'),

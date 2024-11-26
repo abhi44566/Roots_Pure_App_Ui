@@ -39,14 +39,17 @@ class _Salse_ReportState extends State<Salse_Report> {
                 child: Text(
                   "July 2024 Monthly Seles Target Report",
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
                       color: Color(0xff1c3a60)),
                 ),
               )
             ],
           ),
-          Divider(),
+          Divider(
+            height: 5,
+            color: Color(0xff1c3a60),
+          ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: DataTable(

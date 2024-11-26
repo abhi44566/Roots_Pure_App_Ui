@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../DashBoard/dashboard.dart';
 
@@ -8,6 +9,23 @@ class SignInPage extends StatefulWidget {
   State<SignInPage> createState() => _SignInPageState();
 }
 class _SignInPageState extends State<SignInPage> {
+
+  var firstController = TextEditingController();
+  var secondController = TextEditingController();
+
+  void validation() {
+    setState(() {
+      var first = firstController.text.length;
+      var second = secondController.text.length;
+
+      if (first == 10 && second == 6) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Dashboard_Page()));
+      }
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +71,7 @@ class _SignInPageState extends State<SignInPage> {
                         padding:
                             const EdgeInsets.all(20), // Padding around TextField
                         child: TextField(
+                          controller: firstController,
                           decoration: InputDecoration(
                             prefixIcon: Icon(
                               Icons.call_outlined,
@@ -67,7 +86,7 @@ class _SignInPageState extends State<SignInPage> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
                         child: TextField(
-
+                          controller: secondController,
                           obscureText: true, // To hide the password input
                           decoration: InputDecoration(
                               counterStyle: TextStyle(color: Colors.grey),
@@ -89,10 +108,12 @@ class _SignInPageState extends State<SignInPage> {
                           child: ElevatedButton(
                               onPressed: (
 
-                                  ) {
-                                Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => const Dashboard_Page()),
-                                );
+                                  ) async {
+                                final SharedPreferences prefs = await SharedPreferences.getInstance();
+                                //await prefs.setString('Root_Pure', true as String);
+                               await prefs.setBool('Root_Pure', true);
+                                validation();
+                                //Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard_Page()));
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xff1c3a60),

@@ -6,6 +6,7 @@ import 'package:roots_pure/Product/my_Order.dart';
 import 'package:roots_pure/Sign_in_page/sales_report.dart';
 import 'package:roots_pure/Sign_in_page/sign_in_page.dart';
 import '../Backend Ui/attendance.dart';
+import '../Sign_in_page/lgoout_page.dart';
 
 class Dashboard_Page extends StatefulWidget {
   const Dashboard_Page({super.key});
@@ -23,21 +24,6 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
 
       appBar: AppBar(
         toolbarHeight: 90,
-        // leading: Padding(
-        //   padding: EdgeInsets.only(bottom: 33),
-        //   child: IconButton(
-        //     icon: Icon(
-        //       Icons.menu,
-        //       color: Colors.white,
-        //     ),
-        //     onPressed: () {
-        //       Navigator.push(
-        //         context,
-        //         MaterialPageRoute(builder: (context) => const SignInPage()),
-        //       );
-        //     },
-        //   ),
-        // ),
         backgroundColor: Color(0xff1c3a60),
         title: Padding(
           padding: const EdgeInsets.only(bottom: 33),
@@ -429,7 +415,7 @@ class _Dashboard_PageState extends State<Dashboard_Page> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Manage_Customer()),
+                              builder: (context) => const Logout_Page()),
                         );
                       },
                       child: Card(
