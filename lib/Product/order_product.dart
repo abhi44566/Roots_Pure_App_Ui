@@ -16,7 +16,7 @@ class _Add_Product_ConformState extends State<Add_Product_Conform> {
           title: Padding(
             padding: const EdgeInsets.only(left: 60),
             child: Text(
-              "My Order",
+              "Products",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -44,73 +44,7 @@ class _Add_Product_ConformState extends State<Add_Product_Conform> {
           scrollDirection: Axis.horizontal,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          "Category",
-                          style: TextStyle(
-                              color: Color(0xff1c3a60),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 40,
-                            width: 180,
-                            child: TextField(
-                              style: TextStyle(color: Colors.grey),
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Color(0xfff4f9ff),
-                                hintStyle: TextStyle(color: Colors.grey),
-                                border: OutlineInputBorder(),
-                                hintText: 'Select Product',
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          SizedBox(
-                              height: 40,
-                              width: 80,
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Editprodile()),
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xff1c3a60),
-                                      maximumSize: Size(double.infinity, 50),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      )),
-                                  child: Text(
-                                    "SEARCH",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 8,
-                                    ),
-                                  ))),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              SizedBox(height: 50,),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Container(
@@ -223,25 +157,7 @@ class _Add_Product_ConformState extends State<Add_Product_Conform> {
                           SizedBox(
                             width: 33,
                           ),
-                          // Container(
-                          //   child: SizedBox(
-                          //     height: 30,
-                          //     width: 90,
-                          //     child: ElevatedButton(onPressed: (){
-                          //       Navigator.push(
-                          //         context,
-                          //         MaterialPageRoute(
-                          //           builder: (context) => const Add_Product_Conform(),
-                          //         ),
-                          //       );
-                          //     },child: Text("View",
-                          //       style: TextStyle(fontSize:11, fontWeight: FontWeight.bold, color: Colors.white),),
-                          //       style: ElevatedButton.styleFrom(
-                          //         backgroundColor: Color(0xff1c3a60),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
+
                           SizedBox(
                             width: 2,
                           ),
@@ -797,7 +713,12 @@ class _Add_Product_ConformState extends State<Add_Product_Conform> {
                     ),
                   ),
                 ],
-              )
+              ),
+    Column(
+      children: [
+        Text("Grand Total", style: TextStyle(color: Colors.white),)
+      ],
+        )
             ],
           ),
         ));

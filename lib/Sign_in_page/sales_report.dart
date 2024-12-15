@@ -11,7 +11,28 @@ class SalseReport extends StatefulWidget {
 }
 
 class _SalseReportState extends State<SalseReport> {
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateeController = TextEditingController();
+
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate != null) {
+      setState(() {
+        _dateController.text =
+            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+
+        _dateeController.text =
+            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +40,7 @@ class _SalseReportState extends State<SalseReport> {
           title: Padding(
             padding: const EdgeInsets.all(60),
             child: Text(
-              "Salse Report",
+              "Sales Report",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -47,7 +68,7 @@ class _SalseReportState extends State<SalseReport> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("From Date",
+                  Text("  From Date",
                       style: TextStyle(
                           color: Color(0xff1c3a60),
                           fontSize: 16,
@@ -71,30 +92,42 @@ class _SalseReportState extends State<SalseReport> {
                 children: [
                   Expanded(
                     child: TextField(
-                      style: TextStyle(fontSize: 5),
+                      controller: _dateController,
+                      readOnly: true,
+                      style: const TextStyle(fontSize: 14),
                       decoration: InputDecoration(
-                          hintText: "DD/MM/YY",
-                          hintStyle: TextStyle(fontSize: 14),
-                          suffixIcon: Icon(Icons.calendar_month),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(7),
-                          )),
+                        hintText: "DD/MM/YY",
+                        hintStyle: const TextStyle(fontSize: 14),
+                        suffixIcon: GestureDetector(
+                          onTap: () => _selectDate(context),
+                          child: const Icon(Icons.calendar_month),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(width: 10), // Spacing between TextFields
+                  SizedBox(width: 10),
                   Expanded(
                     child: TextField(
-                      style: TextStyle(fontSize: 3),
+                      controller: _dateeController,
+                      readOnly: true,
+                      style: const TextStyle(fontSize: 14),
                       decoration: InputDecoration(
-                          hintText: "DD/MM/YY",
-                          hintStyle: TextStyle(fontSize: 14),
-                          suffixIcon: Icon(Icons.calendar_month),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(7),
-                          )),
+                        hintText: "DD/MM/YY",
+                        hintStyle: const TextStyle(fontSize: 14),
+                        suffixIcon: GestureDetector(
+                          onTap: () => _selectDate(context),
+                          child: const Icon(Icons.calendar_month),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                      ),
                     ),
                   ),
-                  SizedBox(width: 10), // Spacing between TextField and Button
+                  SizedBox(width: 10),
                   SizedBox(
                     height: 45,
                     width: 100,
@@ -120,9 +153,11 @@ class _SalseReportState extends State<SalseReport> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(
+                    left: 10,
+                  ),
                   child: Text(
-                    "Monthly Sales Target",
+                    "  Monthly Sales Target",
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -141,35 +176,34 @@ class _SalseReportState extends State<SalseReport> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                  columns: [
-
-                    DataColumn(
-                        label: Text(
-                          "Sr No",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                    DataColumn(
-                        label: Text(
-                          "Date",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                    DataColumn(
-                        label: Text(
-                          "Achieve Target",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                    DataColumn(
-                        label: Text(
-                          "Total Target",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                    DataColumn(
-                        label: Text(
-                          "View",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                  ],
-                  rows: [
+                columns: [
+                  DataColumn(
+                      label: Text(
+                    "Sr No",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                  DataColumn(
+                      label: Text(
+                    "Date",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                  DataColumn(
+                      label: Text(
+                    "Achieve Target",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                  DataColumn(
+                      label: Text(
+                    "Total Target",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                  DataColumn(
+                      label: Text(
+                    "View",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                ],
+                rows: [
                   DataRow(cells: [
                     DataCell(Text("1")),
                     DataCell(Text("01/02/2024")),
@@ -180,12 +214,13 @@ class _SalseReportState extends State<SalseReport> {
                       width: 80,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Salse_Report()));
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Salse_Report()));
                           },
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xff1c3a60)
-                          ),
+                              backgroundColor: Color(0xff1c3a60)),
                           child: Text(
                             "View",
                             style: TextStyle(
@@ -204,8 +239,10 @@ class _SalseReportState extends State<SalseReport> {
                       width: 80,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Salse_Report()));
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Salse_Report()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
@@ -216,7 +253,8 @@ class _SalseReportState extends State<SalseReport> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           )),
-                    )),]),
+                    )),
+                  ]),
                   DataRow(cells: [
                     DataCell(Text("3")),
                     DataCell(Text("01/02/2024")),
@@ -227,7 +265,10 @@ class _SalseReportState extends State<SalseReport> {
                       width: 80,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Salse_Report()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Salse_Report()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
@@ -250,8 +291,10 @@ class _SalseReportState extends State<SalseReport> {
                       width: 80,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Salse_Report()));
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Salse_Report()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
@@ -274,8 +317,10 @@ class _SalseReportState extends State<SalseReport> {
                       width: 80,
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Salse_Report()));
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Salse_Report()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1c3a60),
@@ -294,17 +339,4 @@ class _SalseReportState extends State<SalseReport> {
           ],
         ));
   }
-  // Future<void> selectDate() async {
-  //   DateTime? _picked = await showDatePicker(
-  //       context: context,
-  //       firstDate: DateTime(2000),
-  //       lastDate: DateTime.now(),
-  //       initialDate: DateTime.now(),
-  //   );
-  //   if (_picked != null){
-  //     setState(() {
-  //       _dateController.text = _picked.toString().split(" ")[0];
-  //     });
-  //   }
-  // }
 }

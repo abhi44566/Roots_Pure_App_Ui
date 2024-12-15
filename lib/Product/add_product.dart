@@ -208,7 +208,7 @@ class _Add_ProductState extends State<Add_Product> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Editprodile()),
+                          builder: (context) => EditProfile()),
                     );
                   },
 

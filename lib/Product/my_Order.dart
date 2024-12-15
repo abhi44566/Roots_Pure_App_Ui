@@ -16,7 +16,7 @@ class _ProductState extends State<Product> {
         title: Padding(
           padding: const EdgeInsets.only(left: 60,),
           child: Text(
-            "My Order",
+            "My Orde",
             style: TextStyle(color: Colors.white),
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:roots_pure/Manage_Customer/ManageCustomer.dart';
+import 'package:roots_pure/DashBoard/ManageCustomer.dart';
 import 'package:roots_pure/Product/add_product.dart';
 class Add_Customer extends StatefulWidget {
   const Add_Customer({super.key});
